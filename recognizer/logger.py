@@ -1,4 +1,5 @@
 import datetime
+from time import strftime
 
 class Logger(object):
   
@@ -10,17 +11,18 @@ class Logger(object):
       self.debugEnabled = debugEnabled
 
   def info(self, input: str):
-    print(f"\n {self.getTimeStamp}[INFO]: {input}")
+    print(f"\n{self.getTimeStamp()}[{self.identity}][INFO]: {input}")
 
   def debug(self, input: str):
     if (self.debugEnabled):
-      print(f"\n {self.getTimeStamp}[DEBUG]: {input}")
+      print(f"\n{self.getTimeStamp()}[{self.identity}][DEBUG]: {input}")
 
   def warn(self, input: str):
-    print(f"\n {self.getTimeStamp}[WARN]: {input}")
+    print(f"\n{self.getTimeStamp()}[{self.identity}][WARN]: {input}")
 
   def getTimeStamp(self):
     rawStamp = datetime.datetime.now()
-    splitStamp = rawStamp.split(' ')
-    stamp = f"[{splitStamp[0]}][{splitStamp[1][0:7]}]"
-    return stamp
+    dateStr = r"%d/%m/%Y"
+    timeStr = r"%H:%M:%S"
+    stamp = f"[{rawStamp.strftime(dateStr)}][{rawStamp.strftime(timeStr)}]"
+    return str(stamp)

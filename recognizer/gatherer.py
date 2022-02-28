@@ -120,7 +120,7 @@ def main(args: dict[str: any]):
             # Else if the count was greater than 30 frames then break
             if count >= 30:
                 break
-    # Information Print about it shutting down
-    logger.info(input="Exiting Program and doing Clean-Up")
+    # Information Print about it shutting down, NOTE: This is being fired, ignore pylance warning
+    logger.info(input="Exiting Program and doing Clean-Up") # Informational Logging
     cam.release()  # Release the camera so it's no longer being actively used
     cv2.destroyAllWindows()  # Closes all CV2 windows

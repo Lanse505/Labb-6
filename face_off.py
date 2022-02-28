@@ -117,25 +117,23 @@ if __name__ == "__main__":
   # Parse any input arguments
   args = vars(ap.parse_args())
 
-  logger = recognizer.logger.Logger(identity="Main", debugEnabled=args["debug"])
-  print(menu)
-  input = input()
+  logger = recognizer.logger.Logger(identity="Main", debugEnabled=args["debug"]) # Setups a Main Logger
+  print(menu) # Prints the Main Menu
+  input = input() # Take in user input
 
+  # Validate the input as an integer and with a valid value between 1 and 4
   while not is_int(input) and not is_within_range(input, 1, 4):
-    logger.warn(input="Invalid Program Input!")
-    logger.warn(input="Please select an OpenCV Operation: ")
-    input = input()
+    logger.warn(input="Invalid Program Input!") # Warning about invalid input
+    logger.warn(input="Please select an OpenCV Operation: ") # Warn-level re-entry question
+    input = input() # Take in user input
 
-  menuId = int(input)
+  menuId = int(input) # Parse the input MenuID
 
-  if menuId == 1:
-    resetMenu()
+  if menuId == 1: # If ID is 1 (Detect and Gather)
     recognizer.gatherer.main(args)
-  elif menuId == 2:
-    resetMenu()
+  elif menuId == 2: # If ID is 2 (Train)
     recognizer.trainer.main(args)
-  elif menuId == 3:
-    resetMenu()
+  elif menuId == 3: # If ID is 3 (Recognize)
     recognizer.recognizer.main(args)
   else:
     sys.exit()

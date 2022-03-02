@@ -11,14 +11,14 @@ class Logger(object):
       self.debugEnabled = debugEnabled
 
   def info(self, input: str):
-    print(f"\n{self.getTimeStamp()}[{self.identity}][INFO]: {input}")
+    print(f"{self.getTimeStamp()}[{self.identity}][INFO]: {input}")
 
   def debug(self, input: str):
     if (self.debugEnabled):
-      print(f"\n{self.getTimeStamp()}[{self.identity}][DEBUG]: {input}")
+      print(f"{self.getTimeStamp()}[{self.identity}][DEBUG]: {input}")
 
   def warn(self, input: str):
-    print(f"\n{self.getTimeStamp()}[{self.identity}][WARN]: {input}")
+    print(f"{self.getTimeStamp()}[{self.identity}][WARN]: {input}")
 
   def getTimeStamp(self):
     rawStamp = datetime.datetime.now()
